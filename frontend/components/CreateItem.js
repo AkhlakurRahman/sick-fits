@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Router from 'next/router';
+import axios from 'axios';
+
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
@@ -40,9 +42,24 @@ class CreateItem extends Component {
     this.setState({ [name]: val });
   };
 
-  uploadFile = e => {
+  uploadFile = async e => {
     console.log('Upload file');
     const files = e.target.files;
+    const data = new FormData();
+    data.append('file', files[0]);
+    data.append('upload_preset', 'sickfits');
+
+    const res = await axios({
+      url: 'https://api.cloudinary.com/v1_1/dtxgfwoej/image/upload',
+      method: 'post',
+      data
+    });
+
+    console.log(res);
+    this.setState({
+      image: res.data.secure_url,
+      largeImage: res.data.eager[0].secure_url
+    });
   };
 
   render() {
@@ -75,6 +92,13 @@ class CreateItem extends Component {
                   required
                   onChange={this.uploadFile}
                 />
+                {this.state.image && (
+                  <img
+                    src={this.state.image}
+                    width="200"
+                    alt="upload preview"
+                  />
+                )}
               </label>
 
               <label htmlFor="title">
