@@ -1,9 +1,9 @@
 import Items from '../components/Items';
 
-const Index = () => {
+const Index = ({ query }) => {
   return (
     <div>
-      <Items />
+      <Items page={+query.page || 1} />
     </div>
   );
 };
