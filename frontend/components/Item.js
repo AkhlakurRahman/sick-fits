@@ -8,7 +8,7 @@ import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 
-export default class Item extends Component {
+class Item extends Component {
   // static propTypes = {
   //   items: PropTypes.object.isRequired
   // };
@@ -36,3 +36,5 @@ export default class Item extends Component {
     );
   }
 }
+
+export default Item;

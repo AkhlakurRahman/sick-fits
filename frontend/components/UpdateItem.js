@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Router from 'next/router';
-import axios from 'axios';
 
 import Form from './styles/Form';
-import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
 
 const SINGLE_ITEM_QUERY = gql`
@@ -52,14 +50,16 @@ class UpdateItem extends Component {
     // Stop the form from submitting
     e.preventDefault();
 
-    console.log(this.state);
     const res = await updateItemMutation({
       variables: {
         id: this.props.id,
         ...this.state
       }
     });
-    console.log('Updated');
+    Router.push({
+      pathname: '/item',
+      query: { id: this.props.id }
+    });
   };
 
   render() {

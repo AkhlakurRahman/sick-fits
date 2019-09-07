@@ -37,7 +37,7 @@ const SINGLE_ITEM_QUERY = gql`
   }
 `;
 
-export default class SingleItem extends Component {
+class SingleItem extends Component {
   render() {
     return (
       <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
@@ -63,3 +63,5 @@ export default class SingleItem extends Component {
     );
   }
 }
+
+export default SingleItem;

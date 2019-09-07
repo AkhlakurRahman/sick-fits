@@ -12,7 +12,7 @@ const DELETE_ITEM_MUTATION = gql`
   }
 `;
 
-export default class DeleteItem extends Component {
+class DeleteItem extends Component {
   update = (cache, payload) => {
     // Read the cache for the items
     const data = cache.readQuery({ query: ALL_ITEMS_QUERY });
@@ -48,3 +48,5 @@ export default class DeleteItem extends Component {
     );
   }
 }
+
+export default DeleteItem;
