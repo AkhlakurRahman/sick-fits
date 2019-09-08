@@ -114,7 +114,7 @@ const Mutations = {
     // Set a reset token and expiry time
     const randomBytesPromisified = promisify(randomBytes);
     const resetToken = (await randomBytesPromisified(20)).toString('hex');
-    const resetTokenExpiry = Date.now() + 600; // 10 minutes from now
+    const resetTokenExpiry = Date.now() + 600000; // 10 minutes from now
 
     const res = await ctx.db.mutation.updateUser({
       where: { email },
@@ -140,8 +140,10 @@ const Mutations = {
 
     // Verify the resetToken and expiry time
     const [user] = await ctx.db.query.users({
-      resetToken,
-      resetTokenExpiry_gte: Date.now() - 600
+      where: {
+        resetToken: resetToken,
+        resetTokenExpiry_gte: Date.now() - 600000
+      }
     });
     if (!user) {
       throw new Error('This token is either invalid or expired!');
