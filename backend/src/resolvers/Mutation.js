@@ -123,7 +123,6 @@ const Mutations = {
         resetTokenExpiry
       }
     });
-    console.log(res);
     return { message: 'WOW' };
   },
 
