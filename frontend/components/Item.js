@@ -9,9 +9,9 @@ import formatMoney from '../lib/formatMoney';
 import DeleteItem from './DeleteItem';
 
 class Item extends Component {
-  // static propTypes = {
-  //   items: PropTypes.object.isRequired
-  // };
+  static propTypes = {
+    items: PropTypes.object.isRequired
+  };
 
   render() {
     const { item } = this.props;
