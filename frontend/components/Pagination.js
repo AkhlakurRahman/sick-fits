@@ -35,7 +35,7 @@ const Pagination = ({ page }) => {
               prefetch
               href={{ pathname: 'items', query: { page: page - 1 } }}
             >
-              <a className="prev" aria-disabled={page <= 1}>
+              <a className='prev' aria-disabled={page <= 1}>
                 &larr; Prev
               </a>
             </Link>
@@ -47,7 +47,7 @@ const Pagination = ({ page }) => {
               prefetch
               href={{ pathname: 'items', query: { page: page + 1 } }}
             >
-              <a className="next" aria-disabled={page >= pages}>
+              <a className='next' aria-disabled={page >= pages}>
                 &rarr; Next
               </a>
             </Link>

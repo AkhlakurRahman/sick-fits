@@ -1,11 +1,11 @@
-import React from "react";
-import { Query, Mutation } from "react-apollo";
-import gql from "graphql-tag";
+import React from 'react';
+import { Query, Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 
-import CartStyles from "./styles/CartStyles";
-import Supreme from "./styles/Supreme";
-import CloseButton from "./styles/CloseButton";
-import SickButton from "./styles/SickButton";
+import CartStyles from './styles/CartStyles';
+import Supreme from './styles/Supreme';
+import CloseButton from './styles/CloseButton';
+import SickButton from './styles/SickButton';
 
 const LOCAL_STATE_QUERY = gql`
   query {
@@ -27,7 +27,7 @@ const Cart = () => {
           {({ data }) => (
             <CartStyles open={data.cartOpen}>
               <header>
-                <CloseButton onClick={toggleCart} title="close">
+                <CloseButton onClick={toggleCart} title='close'>
                   &times;
                 </CloseButton>
                 <Supreme>Your Cart</Supreme>
