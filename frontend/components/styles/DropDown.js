@@ -15,7 +15,8 @@ const DropDownItem = styled.div`
   ${props => (props.highlighted ? 'padding-left: 2rem;' : null)};
   display: flex;
   align-items: center;
-  border-left: 10px solid ${props => (props.highlighted ? props.theme.lightgrey : 'white')};
+  border-left: 10px solid
+    ${props => (props.highlighted ? props.theme.lightgrey : 'white')};
   img {
     margin-right: 10px;
   }
@@ -23,11 +24,11 @@ const DropDownItem = styled.div`
 
 const glow = keyframes`
   from {
-    box-shadow: 0 0 0px yellow;
+    box-shadow: 0 0 0px red;
   }
 
   to {
-    box-shadow: 0 0 10px 1px yellow;
+    box-shadow: 0 0 10px 1px red;
   }
 `;
 
