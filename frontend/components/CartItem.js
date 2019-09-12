@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import formatMoney from '../lib/formatMoney';
+import RemoveItemFromCart from './RemoveItemFromCart';
 
 const StyledCartItem = styled.li`
   padding: 1rem 0;
@@ -18,22 +19,23 @@ const StyledCartItem = styled.li`
   }
 `;
 
-const CartItem = ({
-  cartItem: {
-    item: { id, title, price, image },
-    quantity
-  }
-}) => {
+const CartItem = ({ cartItem }) => {
   return (
     <StyledCartItem>
-      <img width='100' height='100' src={image} alt={title} />
+      <img
+        width='100'
+        height='100'
+        src={cartItem.item.image}
+        alt={cartItem.item.title}
+      />
       <div className='cart-item-details'>
-        <h3>{title}</h3>
+        <h3>{cartItem.item.title}</h3>
         <p>
-          {formatMoney(price * quantity)} - {quantity} &times;{' '}
-          {formatMoney(price)} each
+          {formatMoney(cartItem.item.price * cartItem.quantity)} -{' '}
+          {cartItem.quantity} &times; {formatMoney(cartItem.item.price)} each
         </p>
       </div>
+      <RemoveItemFromCart id={cartItem.id} />
     </StyledCartItem>
   );
 };
