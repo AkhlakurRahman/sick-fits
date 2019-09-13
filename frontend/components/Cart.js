@@ -11,6 +11,7 @@ import SickButton from './styles/SickButton';
 import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
+import StripePayment from './StripePayment';
 
 const LOCAL_STATE_QUERY = gql`
   query {
@@ -59,7 +60,11 @@ const Cart = () => {
 
             <footer>
               <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-              <SickButton>Checkout</SickButton>
+              {me.cart.length && (
+                <StripePayment>
+                  <SickButton>Checkout</SickButton>
+                </StripePayment>
+              )}
             </footer>
           </CartStyles>
         );
